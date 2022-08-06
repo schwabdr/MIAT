@@ -9,8 +9,8 @@ import torch
 class data_noise_dataset(Data.Dataset):
     def __init__(self, img_path, noisy_label_path, clean_label_path):
         
-        self.train_data = np.load(img_path).astype(np.float32) # B C H W
-
+        self.train_data = np.load(img_path).astype(np.float32) # B C H W # what is B? batches?, Channel, Height, Width
+        # I'm going to intuit that B stands for the index of the image. 
         self.train_noisy_labels = np.load(noisy_label_path)
         self.train_clean_labels = np.load(clean_label_path)
 

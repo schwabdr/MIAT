@@ -18,6 +18,9 @@ import numpy as np
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR TRADES Adversarial Training')
 
+#schwab note
+#you will access these by replacing "-" with "_"
+# i.e. args.nat_img_train
 parser.add_argument('--nat-img-train', type=str, help='natural training data', default='./data/train_images.npy')
 parser.add_argument('--nat-label-train', type=str, help='natural training label', default='./data/train_labels.npy')
 parser.add_argument('--nat-img-test', type=str, help='natural test data', default='./data/test_images.npy')

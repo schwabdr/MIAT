@@ -7,7 +7,6 @@ import os
 import numpy as np
 
 #not sure why the original code doesn't have the code to load the data - but I'm going to try and add it
-
 #http://www.cs.toronto.edu/~kriz/cifar.html - all about CIFAR10
 
 def unpickle(file):

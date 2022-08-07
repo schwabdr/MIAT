@@ -62,3 +62,12 @@ x = x.reshape(2,3,4,5) # a 3x4 3 rows, 4 columns, 3 ht, 4 width"img" with 3 chan
 # print types of variables
 #print("type(X):", type(X))
 #print("type(Y):", type(Y))
+
+with open(args.nat_img_train, 'wb') as f:
+    np.save(f, X)
+
+with open(args.nat_img_train, 'rb') as f:
+    a = np.load(f)
+
+print("a",a)
+print("X", X)

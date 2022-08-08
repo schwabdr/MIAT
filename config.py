@@ -13,7 +13,9 @@ class configuration:
 
         self.parser.add_argument('--batch-size', type=int, default=256, metavar='N',
                     help='input batch size for training (default: 128)')
-        self.parser.add_argument('--epochs', type=int, default=100, metavar='N',
+                    #as always, I'm changing the epochs for getting the code up and running
+                    #default was 100, I'm making it 5 just to get everything running.
+        self.parser.add_argument('--epochs', type=int, default=5, metavar='N',
                             help='number of epochs to train')
         self.parser.add_argument('--weight-decay', '--wd', default=2e-4,
                             type=float, metavar='W')

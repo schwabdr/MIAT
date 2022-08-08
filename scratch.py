@@ -13,7 +13,7 @@ matplotlib.use('tkagg')
 import matplotlib.pyplot as plt
 
 print(f"hello MIAT")
-
+'''
 data_dict = dataload.unpickle("./data/cifar-10-batches-py/data_batch_1")
 
 #print(data_dict)
@@ -45,7 +45,7 @@ print(data2[0][0][0][2])
 print(data2[0][2][31][29])
 print(data2[0][2][31][30])
 print(data2[0][2][31][31])
-
+'''
 parser = argparse.ArgumentParser(description='PyTorch CIFAR TRADES Adversarial Training')
 parser.add_argument('--nat-img-train', type=str, help='natural training data', default='./data/train_images.npy')
 args = parser.parse_args()
@@ -62,7 +62,7 @@ x = x.reshape(2,3,4,5) # a 3x4 3 rows, 4 columns, 3 ht, 4 width"img" with 3 chan
 # print types of variables
 #print("type(X):", type(X))
 #print("type(Y):", type(Y))
-
+'''
 with open(args.nat_img_train, 'wb') as f:
     np.save(f, X)
 
@@ -71,3 +71,4 @@ with open(args.nat_img_train, 'rb') as f:
 
 print("a",a)
 print("X", X)
+'''

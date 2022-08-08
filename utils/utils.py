@@ -16,8 +16,8 @@ def displayRandomImgGrid(X, Y, classes, rows=5, cols=5, Y_hat=None):
     #X = X.reshape(10000, 3, 32, 32).transpose(0,2,3,1).astype("uint8")
     #For adding labels see this: https://stackoverflow.com/questions/42435446/how-to-put-text-outside-python-plots
     #https://stackoverflow.com/questions/61341119/write-a-text-inside-a-subplot
-    X_v = X.transpose(0,2,3,1).astype("uint8") 
-
+    #X_v = X.transpose(0,2,3,1).astype("uint8") #shouldn't need this line since I now transpose the data for the ML model to learn
+    X_v = X
     #Visualizing CIFAR 10
     fig, axes1 = plt.subplots(rows,cols,figsize=(5,5))
     for j in range(rows):

@@ -12,31 +12,40 @@ import matplotlib.pyplot as plt
 
 print(f"hello MIAT")
 
-data_dict = dataload.unpickle("./data/cifar-10-batches-py/data_batch_1")
-#label data - names are in this file
-label_dict = dataload.unpickle_string("./data/cifar-10-batches-py/batches.meta")
+X = []
+Y = []
 
-X = data_dict[b'data'] #the b has something to do with binary encoding of string ... not sure - it works.
-Y = data_dict[b'labels']
+for i in range(1,6):
+    name = "data_batch_" + str(i)
+    data_dict = dataload.unpickle(os.path.join("./data/cifar-10-batches-py", name))
+    X_tmp = data_dict[b'data']
+    Y_tmp = data_dict[b'labels']
+    X.append(X_tmp) 
+    Y.append(Y_tmp)
+#reshape makes it [sample][channel][row][col]
+#transpose makes it [sample][row][col][channel]
+X = np.asarray(X, dtype='uint8').reshape(50000,3, 32, 32).transpose(0,2,3,1)
+Y = np.asarray(Y, dtype='uint8').reshape(50000)
+print("X shape:",np.shape(X))
+print("Y shape:",np.shape(Y))
+label_dict = dataload.unpickle_string("./data/cifar-10-batches-py/batches.meta")
 
 data_dict_test = dataload.unpickle("./data/cifar-10-batches-py/test_batch")
 X_test = data_dict[b'data']
 Y_test = data_dict[b'labels']
 
-X = X.reshape(10000, 3, 32, 32).transpose(0,2,3,1).astype("uint8") #reshape makes X into numpy array
-Y = np.array(Y).astype("uint8") #do same for Y, no reshape needed
+X_test = np.asarray(X_test, dtype='uint8').reshape(10000,3,32,32).transpose(0,2,3,1)
+Y_test = np.asarray(Y_test, dtype='uint8').reshape(10000)
 
-X_test = X_test.reshape(10000, 3, 32, 32).transpose(0,2,3,1).astype("uint8") #reshape makes X into numpy array
-Y_test = np.array(Y_test).astype("uint8") #do same for Y, no reshape needed
+print("X_test shape:",np.shape(X_test))
+print("Y_test shape:",np.shape(Y_test))
 
 #index into classes for the correct label
 classes = label_dict['label_names']  #['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
-#utils.displayRandomImgGrid(X, Y, classes, rows=5, cols=5, Y_hat=None)
-
+utils.displayRandomImgGrid(X, Y, classes, rows=5, cols=5, Y_hat=None)
 
 c = config.configuration()
 args = c.getArgs()
-
 
 #https://numpy.org/doc/stable/reference/generated/numpy.save.html
 

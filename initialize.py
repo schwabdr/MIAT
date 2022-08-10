@@ -1,5 +1,5 @@
 from utils import dataload
-from utils import utils
+import util
 import data
 import numpy as np
 import os
@@ -42,7 +42,7 @@ print("Y_test shape:",np.shape(Y_test))
 
 #index into classes for the correct label
 classes = label_dict['label_names']  #['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
-utils.displayRandomImgGrid(X, Y, classes, rows=5, cols=5, Y_hat=None)
+util.displayRandomImgGrid(X, Y, classes, rows=5, cols=5, Y_hat=None)
 
 c = config.configuration()
 args = c.getArgs()

@@ -4,6 +4,7 @@ from PIL import Image
 
 # import tools
 import torch
+import util
 
 
 class data_noise_dataset(Data.Dataset):
@@ -32,12 +33,11 @@ class data_noise_dataset(Data.Dataset):
 class data_dataset(Data.Dataset):
     def __init__(self, img_path, clean_label_path, transform=None):
         self.transform = transform
-
         self.train_data = np.load(img_path)
-
         self.train_clean_labels = np.load(clean_label_path).astype(np.float32)
         self.train_clean_labels = torch.from_numpy(self.train_clean_labels).long()
-
+    #this function below does return the correct labels - I'm not sure if the image is correct.
+    #still not sure I've put the data in the correct format on disk to be read in.
     def __getitem__(self, index):
         img, clean_label = self.train_data[index], self.train_clean_labels[index]
 
@@ -45,7 +45,11 @@ class data_dataset(Data.Dataset):
 
         if self.transform is not None:
             img = self.transform(img)
-
+        #print("__getitem__() inside data.py:")
+        #util.print_tensor_details("img", img)
+        #print(f"img: {img}")
+        #util.print_tensor_details("clean_label", clean_label)
+        #print(f"clean_label: {clean_label}")
         return img, clean_label
 
     def __len__(self):

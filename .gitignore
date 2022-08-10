@@ -12,6 +12,7 @@ __pycache__/
 # Data folders
 data/
 checkpoint/
+models/saved/
 
 # vscode folder?
 .vscode/

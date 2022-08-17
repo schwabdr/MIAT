@@ -1,3 +1,5 @@
+import sys
+
 import numpy as np
 import torch.utils.data as Data
 from PIL import Image
@@ -39,13 +41,15 @@ class data_dataset(Data.Dataset):
     #this function below does return the correct labels - I'm not sure if the image is correct.
     #still not sure I've put the data in the correct format on disk to be read in.
     def __getitem__(self, index):
+        #print("__getitem__() inside data.py:")
         img, clean_label = self.train_data[index], self.train_clean_labels[index]
-
+        #print("img (before fromarray): ", img)
         img = Image.fromarray(img)
-
+        #print("img (after fromarray): ", img)
         if self.transform is not None:
             img = self.transform(img)
-        #print("__getitem__() inside data.py:")
+        #print("img (after transform): ", img)
+        
         #util.print_tensor_details("img", img)
         #print(f"img: {img}")
         #util.print_tensor_details("clean_label", clean_label)

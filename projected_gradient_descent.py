@@ -137,7 +137,7 @@ def projected_gradient_descent(
     Paper link (Madry et al. 2017): https://arxiv.org/pdf/1706.06083.pdf
     :param model_fn: a callable that takes an input tensor and returns the model logits.
     :param x: input tensor.
-    :param eps: epsilon (input variation parameter); see https://arxiv.org/abs/1412.6572. Used for clipping when norm=np.inf
+    :param eps: epsilon (input variation parameter); see https://arxiv.org/abs/1412.6572. schwab: Used for clipping when norm=np.inf
     :param eps_iter: step size for each attack iteration Schwab: I think this is multiplied by the sign of the gradient to add to the image.
     :param nb_iter: Number of attack iterations.
     :param norm: Order of the norm (mimics NumPy). Possible values: np.inf, 1 or 2.
@@ -212,7 +212,8 @@ def projected_gradient_descent(
     if rand_init:
         if rand_minmax is None:
             rand_minmax = eps
-        eta = torch.zeros_like(x).uniform_(-rand_minmax, rand_minmax)
+        #schwab: I think this goes from -rand_minmax to rand_minmax b/c you can lower or raise any single pixel by this value.
+        eta = torch.zeros_like(x).uniform_(-rand_minmax, rand_minmax) 
     else:
         eta = torch.zeros_like(x)
 

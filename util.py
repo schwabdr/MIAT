@@ -14,7 +14,8 @@ args = config.configuration().getArgs()
 #print(args.SAVE_MODEL_PATH)
 
 #displays a grid of images with labels.
-#we assume input is in shape B, C, H, W (img count, channels, height, width)
+#XXXXXwe assume input is in shape B, C, H, W (img count, channels, height, width)
+# assume input is in shape B, H, W, C
 #assume X is NOT normalized - caller must ensure this for now.
 def displayRandomImgGrid(X, Y, classes, rows=5, cols=5, Y_hat=None):
     #Now lets show some images.
@@ -88,8 +89,6 @@ def print_tensor_details(name, data):
 #BEGIN CLEVERHANS UTILS FILE
 #####################################################
 """Utils for PyTorch"""
-
-
 
 
 def clip_eta(eta, norm, eps):

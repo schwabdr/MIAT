@@ -240,7 +240,7 @@ def projected_gradient_descent(
             targeted=targeted,
         )
 
-        # Clipping perturbation eta to norm norm ball
+        # Clipping perturbation eta to norm norm ball #schwab: eta is the perturbation. Need to clip to Norm ball.
         eta = adv_x - x
         eta = util.clip_eta(eta, norm, eps)
         adv_x = x + eta

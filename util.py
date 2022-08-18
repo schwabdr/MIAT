@@ -90,7 +90,8 @@ def print_tensor_details(name, data):
 #####################################################
 """Utils for PyTorch"""
 
-
+#schwab: eta is the perturbation added each iteration of BIM/PGD
+#must be clipped so that we don't stray outside of L2 or Linf norm constraint
 def clip_eta(eta, norm, eps):
     """
     PyTorch implementation of the clip_eta in utils_tf.
